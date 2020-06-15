@@ -37,19 +37,30 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
 
-  render() {
-    return ( 
+render() {
+    return (
       <div>
-        <Header /> 
+        <Header />
         <Switch>
-          <Route exact path = '/' component = {HomePage}/> 
-          <Route path = '/shop' component = {ShopPage}/> 
-          <Route exact path = '/signin' render={() => this.props.currentUser ? (<Redirect to='/' />) : (<SignInAndSignUpPage />)}/> 
-        </Switch> 
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
+        </Switch>
       </div>
     );
   }
 }
+
 
 const mapStateProps = ({ user }) => ({
   currentUser: user.currentUser
